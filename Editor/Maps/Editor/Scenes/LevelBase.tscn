@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://ch5ttw7cv6pfc"]
+
+[ext_resource type="Script" path="res://Editor/Maps/Editor/Scripts/LevelBase.gd" id="1_gf24b"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_2jwm4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_35dpt"]
+
+[sub_resource type="Sky" id="Sky_jxbv4"]
+sky_material = SubResource("ProceduralSkyMaterial_35dpt")
+
+[sub_resource type="Environment" id="Environment_m5vx0"]
+background_mode = 2
+sky = SubResource("Sky_jxbv4")
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_gf24b")
+
+[node name="NavMesh" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_2jwm4")
+
+[node name="Mesh" type="CSGCombiner3D" parent="NavMesh"]
+use_collision = true
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_m5vx0")
+
+[node name="Sun" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="Entities" type="Node3D" parent="."]

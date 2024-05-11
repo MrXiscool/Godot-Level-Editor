@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://eghw5s52lqol"]
+
+[ext_resource type="Script" path="res://Editor/Entities/FreeCam/Scripts/FreeCam.gd" id="1_7ik55"]
+[ext_resource type="Script" path="res://Editor/Entities/FreeCam/Scripts/Control.gd" id="2_yelvn"]
+
+[node name="FreeCam" type="Camera3D"]
+script = ExtResource("1_7ik55")
+
+[node name="RayCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -15)
+
+[node name="Look" type="Marker3D" parent="."]
+
+[node name="Control" type="Container" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_yelvn")
+
+[node name="Bar" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+alignment = 1
+
+[node name="Add Mesh" type="VBoxContainer" parent="Control/Bar"]
+layout_mode = 2
+
+[node name="add mesh button" type="Button" parent="Control/Bar/Add Mesh"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "add mesh"
+
+[node name="Menu" type="VBoxContainer" parent="Control/Bar/Add Mesh"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Bar/Add Mesh/Menu"]
+layout_mode = 2
+
+[node name="Cube" type="Button" parent="Control/Bar/Add Mesh/Menu/VBoxContainer"]
+layout_mode = 2
+text = "Add Cube"
+
+[node name="Mesh" type="Button" parent="Control/Bar/Add Mesh/Menu/VBoxContainer"]
+layout_mode = 2
+text = "Add Mesh"
+
+[node name="Cancel" type="Button" parent="Control/Bar/Add Mesh/Menu"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="Material" type="VBoxContainer" parent="Control/Bar"]
+layout_mode = 2
+
+[node name="material button" type="Button" parent="Control/Bar/Material"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "material"
+
+[node name="Menu" type="VBoxContainer" parent="Control/Bar/Material"]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="Control/Bar/Add Mesh/add mesh button" to="Control" method="_on_add_mesh_button_pressed"]
+[connection signal="pressed" from="Control/Bar/Add Mesh/Menu/VBoxContainer/Cube" to="Control" method="_on_cube_pressed"]
+[connection signal="pressed" from="Control/Bar/Add Mesh/Menu/Cancel" to="Control" method="_on_cancel_pressed"]

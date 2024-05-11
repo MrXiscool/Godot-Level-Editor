@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://big5ct1mw4mw4"]
+
+[ext_resource type="PackedScene" uid="uid://eghw5s52lqol" path="res://Editor/Entities/FreeCam/Scenes/FreeCam.tscn" id="1_tuibw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8kwg0"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_68v6q"]
+sky_material = SubResource("ProceduralSkyMaterial_8kwg0")
+
+[sub_resource type="Environment" id="Environment_t6eln"]
+background_mode = 2
+sky = SubResource("Sky_68v6q")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Editor" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_t6eln")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="FreeCam" parent="." instance=ExtResource("1_tuibw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://pon01spm0pgn"]
+
+[ext_resource type="PackedScene" uid="uid://eghw5s52lqol" path="res://Editor/Entities/FreeCam/Scenes/FreeCam.tscn" id="1_vwtih"]
+[ext_resource type="PackedScene" uid="uid://big5ct1mw4mw4" path="res://Editor/Maps/Editor/Scenes/Editor.tscn" id="2_aij52"]
+
+[node name="Global" type="Node"]
+
+[node name="Editor" parent="." instance=ExtResource("2_aij52")]
+
+[node name="FreeCam" parent="." node_paths=PackedStringArray("Editor") instance=ExtResource("1_vwtih")]
+Editor = NodePath("../Editor")
